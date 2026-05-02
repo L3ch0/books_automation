@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "demoqa-tests"
+version = "1.0.0"
+description = "E2E test automation framework for DemoQA"
+requires-python = ">=3.11"
+dependencies = [
+    "playwright==1.44.0",
+    "pytest==8.2.2",
+    "pytest-xdist==3.5.0",
+    "pytest-html==4.1.1",
+    "pytest-rerunfailures==14.0",
+    "python-dotenv==1.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff==0.4.9",
+    "black==24.4.2",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["config*", "core*", "pages*", "test_data*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "UP"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
